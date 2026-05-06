@@ -1,16 +1,91 @@
-# React + Vite
+# DataScope
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DataScope é uma aplicação web para análise rápida de arquivos CSV, capaz de gerar automaticamente insights e visualizações a partir dos dados enviados pelo usuário.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Upload de arquivos `.csv`
+* Limpeza automática dos dados
+* Remoção de colunas irrelevantes (ex: IDs)
+* Geração de:
 
-## React Compiler
+  * Matriz de correlação
+  * Histogramas das colunas mais relevantes
+  * Gráficos de dispersão com alta correlação
+* Exibição dos dados processados no frontend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧠 Como funciona
 
-## Expanding the ESLint configuration
+### 1. Upload do arquivo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+O usuário seleciona um arquivo `.csv` pela interface.
+
+### 2. Envio para a API
+
+O arquivo é enviado para o backend utilizando `FormData` via requisição `POST`.
+
+### 3. Processamento dos dados
+
+No backend (Python):
+
+* Os dados são carregados com `pandas`
+* Linhas vazias são removidas
+* Colunas irrelevantes são descartadas
+* Apenas dados numéricos são analisados
+
+### 4. Análise
+
+São geradas:
+
+* Correlações entre variáveis
+* Variância para identificar colunas relevantes
+* Relações fortes entre dados (scatter)
+
+### 5. Retorno
+
+A API retorna os dados processados em formato JSON.
+
+### 6. Exibição
+
+O frontend (React) recebe os dados e os exibe na interface.
+
+## 🛠️ Tecnologias utilizadas
+
+### Frontend
+
+* React
+* Vite
+* TailwindCSS
+
+### Backend
+
+* Python
+* FastAPI
+* Pandas
+
+## 📦 Como rodar o projeto
+
+### Backend
+
+```bash
+cd backend
+uvicorn api:app --reload
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 📌 Observações
+
+* O projeto ainda está em desenvolvimento
+* Melhorias visuais e novos gráficos podem ser adicionados
+* Estrutura pensada para ser escalável
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
