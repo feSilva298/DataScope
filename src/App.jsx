@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Botao } from './components/botao'
 import { Histogram } from './components/Histogram'
-import { Scatter } from './components/scatter'
+import { Scatter } from './components/Scatter'
 import { Logapi } from './components/Logapi'
 import { Imshow } from './components/Imshow'
 import './index.css'
