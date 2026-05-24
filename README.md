@@ -7,7 +7,7 @@ A aplicação permite que usuários façam upload de datasets e obtenham anális
 
 ## 🌐 Projeto Online
 
-🔗 https://data-scope-mu.vercel.app/
+[🔗](https://data-scope-mu.vercel.app/)
 
 ---
 
